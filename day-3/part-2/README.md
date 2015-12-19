@@ -1,4 +1,4 @@
-# --- Day 3: Perfectly Spherical Houses in a Vacuum ---
+# Day 3: Perfectly Spherical Houses in a Vacuum
 
 The next year, to speed up the process, Santa creates a robot version of himself, Robo-Santa, to deliver presents with him.
 
