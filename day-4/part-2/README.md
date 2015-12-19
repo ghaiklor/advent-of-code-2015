@@ -1,0 +1,3 @@
+# Day 4: The Ideal Stocking Stuffer
+
+The same as in (part-1)[../part-1] but now we need to find one that starts with six zeroes...
