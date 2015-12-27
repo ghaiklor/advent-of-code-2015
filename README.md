@@ -1,6 +1,6 @@
 # Advent of Code 2015
 
-Solutions for Advent of Code.
+Solutions for Advent of Code which are written with NodeJS.
 
 ## What is Advent of Code?
 
