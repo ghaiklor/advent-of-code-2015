@@ -1,7 +1,5 @@
 'use strict';
 
-const NO_ITEM = {cost: 0, damage: 0, armor: 0};
-
 const WEAPONS = new Map([
   ['dagger', {cost: 8, damage: 4, armor: 0}],
   ['shortsword', {cost: 10, damage: 5, armor: 0}],
@@ -11,6 +9,7 @@ const WEAPONS = new Map([
 ]);
 
 const ARMOR = new Map([
+  ['nothing', {cost: 0, damage: 0, armor: 0}],
   ['leather', {cost: 13, damage: 0, armor: 1}],
   ['chainmail', {cost: 31, damage: 0, armor: 2}],
   ['splintmail', {cost: 53, damage: 0, armor: 3}],
@@ -19,6 +18,7 @@ const ARMOR = new Map([
 ]);
 
 const RINGS = new Map([
+  ['nothing', {cost: 0, damage: 0, armor: 0}],
   ['damage+1', {cost: 25, damage: 1, armor: 0}],
   ['damage+2', {cost: 50, damage: 2, armor: 0}],
   ['damage+3', {cost: 100, damage: 3, armor: 0}],
@@ -52,16 +52,10 @@ const makeMove = (boss, player) => hitPerSecond(boss.get('health'), boss.get('ar
 
 function* possibleBundles() {
   for (let weapon of WEAPONS.values()) {
-    yield getTotalStats(weapon, NO_ITEM, NO_ITEM, NO_ITEM);
-
     for (let armor of ARMOR.values()) {
-      yield getTotalStats(weapon, armor, NO_ITEM, NO_ITEM);
-
       for (let leftRing of RINGS.values()) {
-        yield getTotalStats(weapon, armor, leftRing, NO_ITEM);
-
         for (let rightRing of RINGS.values()) {
-          yield getTotalStats(weapon, armor, leftRing, rightRing);
+          if (rightRing.cost !== leftRing.cost) yield getTotalStats(weapon, armor, leftRing, rightRing);
         }
       }
     }
